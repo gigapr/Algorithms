@@ -198,5 +198,25 @@ namespace LinkedList.Tests
             Assert.Equal(2, linkedList.ValueAt(3).Data);
             Assert.Equal(1, linkedList.ValueAt(4).Data);
         }
+        
+        [Theory]
+        [InlineData(2, 5)]
+        [InlineData(6, 1)]
+        [InlineData(1, 6)]
+        public void Can_get_node_at_n_from_tail(int fromTail, int expected)
+        {
+            var linkedList = new LinkedList();
+            linkedList.AddTail(1);
+            linkedList.AddTail(2);
+            linkedList.AddTail(3);
+            linkedList.AddTail(4);
+            linkedList.AddTail(5);
+            linkedList.AddTail(6);
+            linkedList.AddTail(7);
+
+            var valueAtTwoFromTail = linkedList.ValueAtFromTail(fromTail);
+
+            Assert.Equal(expected, valueAtTwoFromTail.Data);
+        }
     }
 }

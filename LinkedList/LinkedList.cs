@@ -7,7 +7,6 @@ namespace LinkedList
         public Node Head { get; private set; }
         public Node Tail { get; private set; }
         public int Size { get; private set; }
-
         public bool IsEmpty => Head == null;
 
         public void AddTail(object data)
@@ -31,18 +30,6 @@ namespace LinkedList
                     Tail.Next = node;
                 }
                 Tail = node;
-               
-//                var next = Head;
-//                while (next != null)
-//                {
-//                    if (next.Next == null)
-//                    {
-//                        next.Next = node;
-//                        Tail = node;
-//                        break;
-//                    }
-//                    next = next.Next;
-//                }
             }
         }
         
@@ -172,6 +159,26 @@ namespace LinkedList
             }
 
             Head = previous;
+        }
+
+        public Node ValueAtFromTail(int numberFromTail)
+        {
+            Node current = Head;
+            Node valueAtFromTail = Head;
+            var index = 0;
+            
+            while (current != null)
+            {
+                if (index > numberFromTail)
+                {
+                    valueAtFromTail = valueAtFromTail.Next;
+                }
+
+                index++;
+                current = current.Next;
+            }
+
+            return valueAtFromTail;
         }
     }
 }
