@@ -16,27 +16,5 @@ namespace Array
                 theArray[otherEnd] = current;
             }
         }
-
-        public static void Push(this int?[] theArray, int value)
-        {
-            var arrayLength = theArray.Length;
-            var newArray = new int[arrayLength * 2];
-            
-            if (theArray[arrayLength - 1] != 0)
-            {
-                for (var i = 0; i < arrayLength; i++)
-                {
-                    newArray[i] = theArray[i];
-                }
-
-                newArray[arrayLength] = value;
-                
-                theArray = newArray;
-            }
-            else
-            {
-                theArray[theArray.Length] = value;
-            }
-        }
     }
 }

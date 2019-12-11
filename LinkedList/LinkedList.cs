@@ -2,17 +2,17 @@ using System;
 
 namespace LinkedList
 {
-    public class LinkedList
+    public class LinkedList<T>
     {
-        public Node Head { get; private set; }
-        public Node Tail { get; private set; }
+        public Node<T> Head { get; private set; }
+        public Node<T> Tail { get; private set; }
         public int Size { get; private set; }
         public bool IsEmpty => Head == null;
 
-        public void AddTail(object data)
+        public void AddTail(T data)
         {
             Size++;
-            var node = new Node(data);
+            var node = new Node<T>(data);
 
             if (Head == null)
             {
@@ -33,10 +33,10 @@ namespace LinkedList
             }
         }
         
-        public void AddHead(object data)
+        public void AddHead(T data)
         {
             Size++;
-            var node = new Node(data);
+            var node = new Node<T>(data);
             var currentHead = Head;
 
             if (currentHead == null)
@@ -74,7 +74,7 @@ namespace LinkedList
             Head = Head.Next;
         }
 
-        public Node ValueAt(int index)
+        public Node<T> ValueAt(int index)
         {
             var count = 0;
             var current = Head;
@@ -86,6 +86,7 @@ namespace LinkedList
                 }
 
                 current = current.Next;
+                
                 if (current == null)
                 {
                     throw new IndexOutOfRangeException($"Unable to get element at {index}. Linked list length is {count}");
@@ -96,12 +97,12 @@ namespace LinkedList
             throw new IndexOutOfRangeException();
         }
 
-        public void InsertAt(int index, string data)
+        public void InsertAt(int index, T data)
         {
             var count = 0;
             var current = Head;
             var previous = index - 1;
-            var node = new Node(data);
+            var node = new Node<T>(data);
             
             while (count <= index)
             {
@@ -147,7 +148,7 @@ namespace LinkedList
 
         public void Reverse()
         {
-            Node previous = null;
+            Node<T> previous = null;
             var current = Head;
 
             while (current != null)
@@ -161,10 +162,10 @@ namespace LinkedList
             Head = previous;
         }
 
-        public Node ValueAtFromTail(int numberFromTail)
+        public Node<T> ValueAtFromTail(int numberFromTail)
         {
-            Node current = Head;
-            Node valueAtFromTail = Head;
+            Node<T> current = Head;
+            Node<T> valueAtFromTail = Head;
             var index = 0;
             
             while (current != null)

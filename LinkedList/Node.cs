@@ -1,16 +1,16 @@
 namespace LinkedList
 {
-    public class Node
+    public class Node<T>
     {
         public object Data { get; }
-        public Node Next { get; set; }
+        public Node<T> Next { get; set; }
         
-        public Node(object data)
+        public Node(T data)
         {
             Data = data;
         }
         
-        protected bool Equals(Node other)
+        protected bool Equals(Node<T> other)
         {
             return Equals(Data, other.Data);
         }
@@ -19,7 +19,7 @@ namespace LinkedList
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((Node) obj);
+            return obj.GetType() == GetType() && Equals((Node<T>) obj);
         }
 
         public override int GetHashCode()
